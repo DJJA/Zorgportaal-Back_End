@@ -1,2 +1,2 @@
-# Zorgportaal-Back_End
+# Zorgportaal
 Dit zorgportaal houdt het zorgproces van de zorgbehoevende bij. Hierin kan een zorgplan worden uitgewerkt. Men kan hier te bereiken (leer)doelen inzetten en de voortgang bijhouden. Gesprekken kunnen genotuleerd worden. De zorgverlener en de zorgbehoevende kunnen beide notities maken die voor elkaar niet zichtbaar zijn. En de geestelijke gezondheid van de cliënt kan worden bijgehouden.
