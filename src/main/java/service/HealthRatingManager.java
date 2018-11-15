@@ -26,6 +26,6 @@ public class HealthRatingManager {
     }
 
     public void removeHealthRating(Long healthRatingId) {
-        // this is random text 4
+        // this is random text 5
     }
 }
