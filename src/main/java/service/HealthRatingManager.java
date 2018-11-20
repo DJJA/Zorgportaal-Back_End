@@ -3,6 +3,7 @@ package service;
 import dao.HealthRatingDAO;
 import dao.HealthRatingJPAImpl;
 import domain.HealthRating;
+import factory.DAOFactory;
 import factory.HibernateFactory;
 
 import javax.persistence.EntityManager;
@@ -10,22 +11,42 @@ import javax.persistence.EntityManager;
 public class HealthRatingManager {
 
     public void addHealthRating(HealthRating healthRating) {
-        EntityManager em = HibernateFactory.getEntityManager();
-        HealthRatingDAO dao = new HealthRatingJPAImpl(em);
+        HealthRatingDAO healthRatingDAO = DAOFactory.getHealthRatingDAO();
+        EntityManager em = healthRatingDAO.getEntityMangaer();
 
         em.getTransaction().begin();
 
-        dao.add(healthRating);
+        healthRatingDAO.add(healthRating);
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void updateHealthRating(HealthRating healthRating) {
+        HealthRatingDAO healthRatingDAO = DAOFactory.getHealthRatingDAO();
+        EntityManager em = healthRatingDAO.getEntityMangaer();
+
+        em.getTransaction().begin();
+
+        healthRatingDAO.update(healthRating);
 
         em.getTransaction().commit();
         em.close();
     }
 
     public Iterable<HealthRating> getClientsHealthratings(Long clientId) {
-        return null;
+        return DAOFactory.getHealthRatingDAO().getClientsHealthRatings(clientId);
     }
 
     public void removeHealthRating(Long healthRatingId) {
-        // this is random text 5
+        HealthRatingDAO healthRatingDAO = DAOFactory.getHealthRatingDAO();
+        EntityManager em = healthRatingDAO.getEntityMangaer();
+
+        em.getTransaction().begin();
+
+        healthRatingDAO.delete(new HealthRating(healthRatingId));
+
+        em.getTransaction().commit();
+        em.close();
     }
 }

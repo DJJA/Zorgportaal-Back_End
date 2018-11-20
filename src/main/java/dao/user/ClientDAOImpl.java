@@ -1,19 +1,31 @@
 package dao.user;
 
+import dao.GenericDAO;
 import domain.Client;
+import factory.HibernateFactory;
 
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.Collection;
 
-public class ClientDAOImpl implements ClientDAO {
-    private EntityManager em;
+public class ClientDAOImpl extends GenericDAO implements ClientDAO {
 
     public ClientDAOImpl(EntityManager em) {
-        this.em = em;
+        super(em);
     }
 
-    public Collection<Client> getAll() {
-        return null;
+    public Iterable<Client> getAll() {
+        Iterable<Client> clients = null;
+
+        Query q = em.createQuery("select c from Client as c");
+        try {
+            clients = q.getResultList();
+        } catch (Exception ex) {
+
+        }
+
+        return clients;
     }
 
     public Client add(Client value) {
@@ -22,6 +34,24 @@ public class ClientDAOImpl implements ClientDAO {
     }
 
     public Client update(Client value) {
-        return null;
+        return em.merge(value);
+    }
+
+    public Client getById(Long clientId) {
+        Client client = null;
+
+        Query q = em.createQuery("select c from Client as c where c.id = :id");
+        q.setParameter("id", clientId);
+        try {
+            client = (Client) q.getSingleResult();
+        } catch (Exception ex) {
+
+        }
+
+        return client;
+    }
+
+    public void close() {
+        System.out.println("jaaaa gesloten!");
     }
 }

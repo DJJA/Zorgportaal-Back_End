@@ -33,4 +33,11 @@ public class HealthRating {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public HealthRating() {
+    }
+
+    public HealthRating(Long id) {
+        this.id = id;
+    }
 }

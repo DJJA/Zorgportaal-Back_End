@@ -11,16 +11,16 @@ import static org.junit.Assert.*;
 
 public class ClientManagerTest {
 
-//    @Test
-//    public void addClient() {
-//        ClientManager mgr = new ClientManager();
-//
-//        Client client = new Client("Dirk-Jan", new Date(), Gender.MALE, "bla bla bla help hem");
-//
-//        Account account = new Account("dj", "dj");
-//
-//        client.setAccount(account);
-//
-//        mgr.addClient(client);
-//    }
+    @Test
+    public void addClient() {
+        ClientManager mgr = new ClientManager();
+
+        Client client = new Client("Dirk-Jan", new Date(), Gender.MALE, "bla bla bla help hem");
+
+        Account account = new Account("dj", "dj");
+
+        client.setAccount(account);
+
+        mgr.addClient(client);
+    }
 }
