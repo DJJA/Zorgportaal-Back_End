@@ -3,6 +3,8 @@ package service;
 import authentication.Account;
 import domain.Client;
 import domain.Gender;
+import factory.DatabaseType;
+import factory.HibernateFactory;
 import factory.ManagerFactory;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,6 +17,7 @@ public class ClientManagerTest {
 
     @Test
     public void addClient() {
+        HibernateFactory.setDatabaseType(DatabaseType.TEST);
         ClientManager clientManager = ManagerFactory.getClientManager();
         Client client1 = new Client("Dirk-Jan", new Date(), Gender.MALE, "bla bla bla help hem");
         Account account = new Account("dj", "dj");
