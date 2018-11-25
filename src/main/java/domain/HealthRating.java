@@ -35,9 +35,28 @@ public class HealthRating {
     }
 
     public HealthRating() {
+        // Needed for Hibernate
     }
 
-    public HealthRating(Long id) {
+    public HealthRating(Long id) {  // TODO: Review all domain classes and determine what properties can be null and update the equals methods and corresponding tests
         this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+
+        HealthRating healthRating = (HealthRating) obj;
+        if (this.id == null ? healthRating.id != null : !this.id.equals(healthRating.id)) return false;
+        if (this.rating != healthRating.rating) return false;
+        if (!this.date.equals(healthRating.date)) return false;
+
+        return true;
     }
 }

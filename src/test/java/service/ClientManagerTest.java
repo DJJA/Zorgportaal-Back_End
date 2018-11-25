@@ -19,14 +19,14 @@ public class ClientManagerTest {
     public void addClient() {
         HibernateFactory.setDatabaseType(DatabaseType.TEST);
         ClientManager clientManager = ManagerFactory.getClientManager();
-        Client client1 = new Client("Dirk-Jan", new Date(), Gender.MALE, "bla bla bla help hem");
-        Account account = new Account("dj", "dj");
-        client1.setAccount(account);
+        Client client1 = new Client("Dirk-Jan", new Date(), Gender.MALE, new Account("dj", "dj"),"bla bla bla help hem");
+//        Account account = new Account("dj", "dj");
+//        client1.setAccount(account);
 
         clientManager.addClient(client1);
 
-//        Client client2 = ManagerFactory.getClientManager().getClientById(1L);
+        Client client2 = ManagerFactory.getClientManager().getClientById(1L);
 
-//        Assert.assertEquals(client1, client2);
+        Assert.assertEquals(client1, client2);
     }
 }

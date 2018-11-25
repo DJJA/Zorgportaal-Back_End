@@ -1,5 +1,7 @@
 package domain;
 
+import authentication.Account;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -13,8 +15,29 @@ public class Mentor extends User {
     @Column(name = "Education")
     private String education;
 
-    public Mentor(String name, Date birthday, Gender gender, String education) {
-        super(name, birthday, gender);
+    public Mentor() {
+        super();
+        // Needed for Hibernate
+    }
+
+    public Mentor(String name, Date birthday, Gender gender, Account account, String education) {
+        super(name, birthday, gender, account);
         this.education = education;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+
+        Mentor mentor = (Mentor) obj;
+        if (!this.education.equals(mentor.education)) return false;
+
+        return super.equals(obj);
     }
 }

@@ -2,12 +2,8 @@ package dao.user;
 
 import dao.GenericDAO;
 import domain.Client;
-import factory.HibernateFactory;
-
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import java.util.Collection;
 
 public class ClientDAOImpl extends GenericDAO implements ClientDAO {
 
@@ -45,7 +41,7 @@ public class ClientDAOImpl extends GenericDAO implements ClientDAO {
         try {
             client = (Client) q.getSingleResult();
         } catch (Exception ex) {
-
+            System.out.println(ex.getMessage());
         }
 
         return client;
