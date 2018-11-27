@@ -41,6 +41,7 @@
         <mapping class="domain.Mentor"/>
         <!--<mapping class="domain.Gender"/>-->
         <mapping class="authentication.Account"/>
+        <mapping class="authentication.Role"/>
 
     </session-factory>
 </hibernate-configuration>

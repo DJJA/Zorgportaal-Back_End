@@ -1,6 +1,7 @@
 package domain;
 
 import authentication.Account;
+import factory.MockFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,7 @@ public class UserTest {
 
     @Test
     public void equalsSameObjectTest() {
-        Account account = new Account("dj", "dj");
+        Account account = new Account("dj", "dj", MockFactory.getAdminRoles());
         User user1 = new User(1L, "Dirk-Jan", new Date(), Gender.MALE, account);
         User user2 = user1;
 
@@ -30,8 +31,8 @@ public class UserTest {
 
     @Test
     public void equalsDifferentObjectSameValuesTest() {
-        Account account1 = new Account("dj", "dj");
-        Account account2 = new Account("dj", "dj");
+        Account account1 = new Account("dj", "dj", MockFactory.getAdminRoles());
+        Account account2 = new Account("dj", "dj", MockFactory.getAdminRoles());
         Date birthday = new Date();
         User user1 = new User(1L, "Dirk-Jan", birthday, Gender.MALE, account1);
         User user2 = new User(1L, "Dirk-Jan", birthday, Gender.MALE, account2);
