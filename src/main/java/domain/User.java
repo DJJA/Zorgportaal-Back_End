@@ -73,7 +73,7 @@ public class User {
         } else {
             if (!this.id.equals(user.id)) return false;
         }
-        if (!this.account.equals(user.account)) return false;   // TODO: Is this possible? Private field no getter ...
+//        if (!this.account.equals(user.account)) return false;   // Omitted since the security model is not relevant for this semester. Semester 6 we''l learn to decouple this from the app.
         if (!this.name.equals(user.name)) return false;
         if (!this.birthday.equals(user.birthday)) return false;
         if (!this.gender.equals(user.gender)) return false;

@@ -16,7 +16,7 @@ public class Client extends User {
     private String carePlan;
 
     public Client() {
-        super();
+        super();                // TODO: Is this necessary?
         // Needed for Hibernate
     }
 

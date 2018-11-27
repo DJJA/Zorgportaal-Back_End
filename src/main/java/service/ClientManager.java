@@ -1,5 +1,8 @@
 package service;
 
+import authentication.Account;
+import authentication.Role;
+import authentication.Scope;
 import dao.user.ClientDAO;
 import dao.user.ClientDAOImpl;
 import domain.Client;
@@ -8,6 +11,7 @@ import factory.HibernateFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 public class ClientManager {
 
@@ -20,8 +24,22 @@ public class ClientManager {
 
         em.getTransaction().begin();
 
-        if(client.getAccount() != null)
+        if(client.getAccount() != null) {
+//            Account account = client.getAccount();
+//            if(account.getRoles() != null) {
+//                List<Role> roles = account.getRoles();
+//                for (Role role : roles) {
+//                    if (role.getScopes() != null) {
+//                        List<Scope> scopes = role.getScopes();
+//                        for (Scope scope : scopes) {
+//                            scope = em.merge(scope);
+//                        }
+//                    }
+//                    role = em.merge(role);
+//                }
+//            }
             client.setAccount(em.merge(client.getAccount()));
+        }
 
         clientDAO.add(client);
 

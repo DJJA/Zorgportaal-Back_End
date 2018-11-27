@@ -2,6 +2,8 @@ package authentication;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -18,7 +20,7 @@ public class Account {
     @Column(name = "Password")
     private String password;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable(name = "Account_Role",
 //            joinColumns = @JoinColumn(name = "AccountId", referencedColumnName = "Id"),
 //            inverseJoinColumns = @JoinColumn(name = "RoleId", referencedColumnName = "Id")
@@ -28,6 +30,10 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name = "RoleId")
     )
     private List<Role> roles = new ArrayList<>();
+
+    public List<Role> getRoles() {
+        return roles;
+    }
 
     public Account() {
         // Required for Hiberante

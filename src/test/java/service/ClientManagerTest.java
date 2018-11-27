@@ -19,7 +19,7 @@ public class ClientManagerTest {
     public void addClientGetClient() {
         HibernateFactory.setDatabaseType(DatabaseType.TEST);
         ClientManager clientManager = ManagerFactory.getClientManager();
-        Client client1 = new Client("Dirk-Jan", new Date(), Gender.MALE, new Account("dj", "dj", MockFactory.getAdminRoles()),"bla bla bla help hem");
+        Client client1 = new Client("Dirk-Jan", new Date(), Gender.MALE, MockFactory.getAdminAccount(),"bla bla bla help hem");
 
         clientManager.addClient(client1);
 

@@ -1,6 +1,5 @@
 package domain;
 
-import authentication.Account;
 import factory.MockFactory;
 import org.junit.Test;
 
@@ -12,8 +11,7 @@ public class ClientTest {
 
     @Test
     public void equalsSameObjectTest() {
-        Account account = new Account("dj", "dj", MockFactory.getAdminRoles());
-        Client client1 = new Client("Dirk-Jan", new Date(), Gender.MALE, account, "bla bla bla help");
+        Client client1 = new Client("Dirk-Jan", new Date(), Gender.MALE, MockFactory.getAdminAccount(), "bla bla bla help");
         Client client2 = client1;
 
         assertEquals(client1, client2);
@@ -21,10 +19,9 @@ public class ClientTest {
 
     @Test
     public void equalsDifferentObjectSameValuesTest() {
-        Account account = new Account("dj", "dj", MockFactory.getAdminRoles());
         Date birthday = new Date();
-        Client client1 = new Client("Dirk-Jan", birthday, Gender.MALE, account, "bla bla bla help");
-        Client client2 = new Client("Dirk-Jan", birthday, Gender.MALE, account, "bla bla bla help");;
+        Client client1 = new Client("Dirk-Jan", birthday, Gender.MALE, MockFactory.getAdminAccount(), "bla bla bla help");
+        Client client2 = new Client("Dirk-Jan", birthday, Gender.MALE, MockFactory.getAdminAccount(), "bla bla bla help");;
 
         assertEquals(client1, client2);
     }

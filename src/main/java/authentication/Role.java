@@ -14,12 +14,16 @@ public class Role {
     @Column(name = "Name", unique = true)
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Role_Scope",
             joinColumns = @JoinColumn(name = "RoleId"),
             inverseJoinColumns = @JoinColumn(name = "ScopeId")
     )
     private List<Scope> scopes = new ArrayList<>();
+
+    public List<Scope> getScopes() {
+        return scopes;
+    }
 
     public Role() {
         // Required for Hibernate
