@@ -47,6 +47,10 @@ public class User {
         this.account = account;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Account getAccount() {
         return account;
     }

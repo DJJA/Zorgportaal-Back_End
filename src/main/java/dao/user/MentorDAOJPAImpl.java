@@ -33,7 +33,7 @@ public class MentorDAOJPAImpl extends GenericDAO implements MentorDAO {
         try {
             mentor = (Mentor) q.getSingleResult();
         } catch (Exception ex) {
-
+            System.out.println(ex.getMessage());
         }
 
         return mentor;

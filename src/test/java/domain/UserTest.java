@@ -12,14 +12,6 @@ import static org.junit.Assert.*;
 
 public class UserTest {
 
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
     @Test
     public void equalsSameObjectTest() {
         Account account = new Account("dj", "dj", MockFactory.getAdminRoles());

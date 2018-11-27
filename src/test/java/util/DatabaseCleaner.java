@@ -1,6 +1,8 @@
 package util;
 
 import authentication.Account;
+import authentication.Role;
+import authentication.Scope;
 import domain.Client;
 import domain.HealthRating;
 import domain.Mentor;
@@ -17,7 +19,9 @@ public class DatabaseCleaner {
             User.class,
             Client.class,
             Mentor.class,
-            Account.class
+            Account.class,
+            Role.class,
+            Scope.class
     };
     private final EntityManager em;
 

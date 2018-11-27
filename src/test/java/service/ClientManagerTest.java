@@ -7,13 +7,26 @@ import factory.DatabaseType;
 import factory.HibernateFactory;
 import factory.ManagerFactory;
 import factory.MockFactory;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import util.DatabaseCleaner;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class ClientManagerTest {
+
+    @Before
+    public void setUp() throws Exception {
+        new DatabaseCleaner(HibernateFactory.getEntityManager()).clean();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
 
     @Test
     public void addClientGetClient() {
@@ -23,7 +36,11 @@ public class ClientManagerTest {
 
         clientManager.addClient(client1);
 
-        Client client2 = ManagerFactory.getClientManager().getClientById(1L);
+        List<Client> clients = (List) ManagerFactory.getClientManager().getAllClients();
+
+        assertEquals(1, clients.size());
+
+        Client client2 = ManagerFactory.getClientManager().getClientById(clients.get(0).getId());
 
         assertEquals(client1, client2);
     }
