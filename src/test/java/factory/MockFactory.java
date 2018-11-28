@@ -5,15 +5,17 @@ import authentication.Account;
 import authentication.Role;
 import authentication.Scope;
 import domain.Client;
+import domain.Gender;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MockFactory {
 
-//    public static Client getClient() {
-//        return new Client("dj")
-//    }
+    public static Client getClient() {
+        return new Client("Dirk-Jan", new Date(), Gender.MALE, getAdminAccount(), "help deze jongen");
+    }
 
     public static Account getAdminAccount() {
         return new Account("dj", "dj", getAdminRoles());

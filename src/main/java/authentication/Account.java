@@ -35,6 +35,18 @@ public class Account {
         return roles;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public Account() {
         // Required for Hiberante
     }

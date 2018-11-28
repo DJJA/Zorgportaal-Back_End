@@ -2,10 +2,7 @@ package factory;
 
 import dao.HealthRatingDAO;
 import dao.HealthRatingJPAImpl;
-import dao.user.ClientDAO;
-import dao.user.ClientDAOImpl;
-import dao.user.MentorDAO;
-import dao.user.MentorDAOJPAImpl;
+import dao.user.*;
 
 public class DAOFactory {
 
@@ -19,5 +16,9 @@ public class DAOFactory {
 
     public static HealthRatingDAO getHealthRatingDAO() {
         return new HealthRatingJPAImpl(HibernateFactory.getEntityManager());
+    }
+
+    public static AccountDAO getAccountDAO() {
+        return new AccountDAOJPAImpl(HibernateFactory.getEntityManager());
     }
 }
