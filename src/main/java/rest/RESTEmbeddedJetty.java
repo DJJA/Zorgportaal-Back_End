@@ -5,6 +5,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
+import rest.filters.CorsFilter;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +45,7 @@ public class RESTEmbeddedJetty {
     protected static ResourceConfig createResourceConfig() {
         final ResourceConfig rc = new ResourceConfig();
         rc.packages(RESOURCE_DIR);
-//        rc.register(new CorsFilter());
+        rc.register(new CorsFilter());
         return rc;
     }
 }
