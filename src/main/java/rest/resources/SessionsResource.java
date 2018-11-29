@@ -28,8 +28,8 @@ public class SessionsResource {
             String jwt = ManagerFactory.getSessionManager().authenticateUser(userCredentials);
             token = new Token(jwt);
         } catch (UserNotAuthenticatedException e) {
-            Error error = new Error("sessions", 403, "Invalid user credentials.");
-            return Response.status(403).entity(gson.toJson(error)).build();
+            Error error = new Error("sessions", 401, "Invalid user credentials.");
+            return Response.status(401).entity(gson.toJson(error)).build();
         } catch (TokenGenerationException e) {
             Error error = new Error("sessions", 500, "Something went wrong when authenticating the user.");
             return Response.status(500).entity(gson.toJson(error)).build();
