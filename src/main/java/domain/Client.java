@@ -20,8 +20,8 @@ public class Client extends User {
         // Needed for Hibernate
     }
 
-    public Client(String name, Date birthday, Gender gender, Account account, String carePlan) {
-        super(name, birthday, gender, account);
+    public Client(String fuillName, Date birthday, Gender gender, Account account, String carePlan) {
+        super(fuillName, birthday, gender, account);
         this.carePlan = carePlan;
     }
 

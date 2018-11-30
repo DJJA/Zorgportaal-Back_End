@@ -18,8 +18,8 @@ public class User {
     @JoinColumn(name = "AccountId")
     private Account account;
 
-    @Column(name = "Name", nullable = false)
-    private String name;
+    @Column(name = "FullName", nullable = false)
+    private String fuillName;
 
     @Column(name = "Birthday", nullable = false)
     private Date birthday;
@@ -32,16 +32,16 @@ public class User {
         // Needed for Hibernate
     }
 
-    public User(String name, Date birthday, Gender gender, Account account) {
-        this.name = name;
+    public User(String fuillName, Date birthday, Gender gender, Account account) {
+        this.fuillName = fuillName;
         this.birthday = birthday;
         this.gender = gender;
         this.account = account;
     }
 
-    public User(Long id, String name, Date birthday, Gender gender, Account account) {
+    public User(Long id, String fuillName, Date birthday, Gender gender, Account account) {
         this.id = id;
-        this.name = name;
+        this.fuillName = fuillName;
         this.birthday = birthday;
         this.gender = gender;
         this.account = account;
@@ -78,7 +78,7 @@ public class User {
             if (!this.id.equals(user.id)) return false;
         }
 //        if (!this.account.equals(user.account)) return false;   // Omitted since the security model is not relevant for this semester. Semester 6 we''l learn to decouple this from the app.
-        if (!this.name.equals(user.name)) return false;
+        if (!this.fuillName.equals(user.fuillName)) return false;
         if (!this.birthday.equals(user.birthday)) return false;
         if (!this.gender.equals(user.gender)) return false;
 

@@ -20,8 +20,8 @@ public class Mentor extends User {
         // Needed for Hibernate
     }
 
-    public Mentor(String name, Date birthday, Gender gender, Account account, String education) {
-        super(name, birthday, gender, account);
+    public Mentor(String fuillName, Date birthday, Gender gender, Account account, String education) {
+        super(fuillName, birthday, gender, account);
         this.education = education;
     }
 
