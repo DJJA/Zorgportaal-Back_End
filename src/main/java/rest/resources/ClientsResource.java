@@ -34,7 +34,7 @@ public class ClientsResource {
     public Response addClient(String clientJson) {
         Client client = new Gson().fromJson(clientJson, Client.class);
         ManagerFactory.getClientManager().addClient(client);
-        return Response.status(200).entity("goeie!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 
     @PUT

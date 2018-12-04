@@ -6,6 +6,7 @@ import exceptions.TokenGenerationException;
 import exceptions.UserNotAuthenticatedException;
 import factory.ManagerFactory;
 import rest.util.Error;
+import rest.util.ResponseObject;
 import rest.util.Token;
 
 import javax.ws.rs.Consumes;
@@ -28,11 +29,13 @@ public class SessionsResource {
             String jwt = ManagerFactory.getSessionManager().authenticateUser(userCredentials);
             token = new Token(jwt);
         } catch (UserNotAuthenticatedException e) {
-            Error error = new Error("sessions", 401, "Invalid user credentials.");
-            return Response.status(401).entity(gson.toJson(error)).build();
+//            Error error = new Error("sessions", 401, "Invalid user credentials.");
+            ResponseObject responseObject = new ResponseObject("sessions", 401, "Invalid user credentials.");
+            return Response.status(401).entity(gson.toJson(responseObject)).build();
         } catch (TokenGenerationException e) {
-            Error error = new Error("sessions", 500, "Something went wrong when authenticating the user.");
-            return Response.status(500).entity(gson.toJson(error)).build();
+//            Error error = new Error("sessions", 500, "Something went wrong when authenticating the user.");
+            ResponseObject responseObject = new ResponseObject("sessions", 500, "Something went wrong when authenticating the user.");
+            return Response.status(500).entity(gson.toJson(responseObject)).build();
         }
         return Response.status(200).entity(gson.toJson(token)).build();
     }

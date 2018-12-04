@@ -19,9 +19,9 @@ public class User {
     private Account account;
 
     @Column(name = "FullName", nullable = false)
-    private String fuillName;
+    private String fullName;
 
-    @Column(name = "Birthday", nullable = false)
+    @Column(name = "Birthday")
     private Date birthday;
 
     @Enumerated(value = EnumType.STRING)
@@ -33,7 +33,7 @@ public class User {
     }
 
     public User(String fuillName, Date birthday, Gender gender, Account account) {
-        this.fuillName = fuillName;
+        this.fullName = fuillName;
         this.birthday = birthday;
         this.gender = gender;
         this.account = account;
@@ -41,7 +41,7 @@ public class User {
 
     public User(Long id, String fuillName, Date birthday, Gender gender, Account account) {
         this.id = id;
-        this.fuillName = fuillName;
+        this.fullName = fuillName;
         this.birthday = birthday;
         this.gender = gender;
         this.account = account;
@@ -78,7 +78,7 @@ public class User {
             if (!this.id.equals(user.id)) return false;
         }
 //        if (!this.account.equals(user.account)) return false;   // Omitted since the security model is not relevant for this semester. Semester 6 we''l learn to decouple this from the app.
-        if (!this.fuillName.equals(user.fuillName)) return false;
+        if (!this.fullName.equals(user.fullName)) return false;
         if (!this.birthday.equals(user.birthday)) return false;
         if (!this.gender.equals(user.gender)) return false;
 
