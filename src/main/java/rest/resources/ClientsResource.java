@@ -45,6 +45,6 @@ public class ClientsResource {
         // TODO: Client Id as String ???????
         Client client = new Gson().fromJson(clientJson, Client.class);
         ManagerFactory.getClientManager().updateClient(client);     // TODO: Misschien wel teruggeven, handig voor front-end?
-        return Response.status(200).entity("werkt!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 }

@@ -8,21 +8,21 @@ public class HealthRatingsResource {
     @GET
     @Produces("application/json")
     public Response getAllMentors() {
-        return Response.status(200).entity("werkt!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 
     @GET
     @Path("/{mentorId}")
     @Produces("application/json")
     public Response getMentor(@PathParam("mentorId") String clientIdAsString) {
-        return Response.status(200).entity("werkt!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 
     @POST
     @Consumes("application/json")
     @Produces("application/json")
     public Response addMentor(String mentorJson) {
-        return Response.status(200).entity("werkt!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 
     @PUT
@@ -30,13 +30,13 @@ public class HealthRatingsResource {
     @Consumes("application/json")
     @Produces("application/json")
     public Response editMentor(@PathParam("mentorId") String mentorIdAsString, String mentorJson) {
-        return Response.status(200).entity("werkt!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 
     @DELETE
     @Path("/{healthRatingId}")
     @Produces("application/json")
     public Response deleteHealthRating(@PathParam("healthRatingId") String healthRatingIdAsString) {
-        return Response.status(200).entity("werkt!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 }

@@ -33,7 +33,7 @@ public class MentorsResource {
     public Response addMentor(String mentorJson) {
         Mentor mentor = new Gson().fromJson(mentorJson, Mentor.class);
         ManagerFactory.getMentorManager().addMentor(mentor);
-        return Response.status(200).entity("werkt!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 
     @PUT
@@ -43,6 +43,6 @@ public class MentorsResource {
     public Response editMentor(@PathParam("mentorId") String mentorIdAsString, String mentorJson) {
         Mentor mentor = new Gson().fromJson(mentorJson, Mentor.class);
         ManagerFactory.getMentorManager().updateMentor(mentor);
-        return Response.status(200).entity("werkt!").build();
+        return Response.status(200).entity("{\"text\":\"goeie!\"}").build();
     }
 }
