@@ -75,4 +75,8 @@ public class ClientManager {
     public void close() {
         System.out.println("jaaaaa gesloten!");
     }
+
+    public Iterable<Client> getClientsByMentorId(Long mentorId) {
+
+    }
 }

@@ -2,11 +2,10 @@ package domain;
 
 import authentication.Account;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "UserId")
@@ -14,6 +13,13 @@ import java.util.Date;
 public class Mentor extends User {
     @Column(name = "Education")
     private String education;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Mentor_Client",
+        joinColumns = @JoinColumn(name = "MentorId"),
+        inverseJoinColumns = @JoinColumn(name = "ClientId")
+    )
+    private List<Client> clients = new ArrayList<>();
 
     public Mentor() {
         super();

@@ -1,6 +1,7 @@
 package service;
 
 import dao.user.MentorDAO;
+import domain.Client;
 import domain.Mentor;
 import factory.DAOFactory;
 
@@ -44,5 +45,13 @@ public class MentorManager {
 
     public Iterable<Mentor> getAllMentors() {
         return DAOFactory.getMentorDAO().getAll();
+    }
+
+    public void addClientToMentor(Long mentorId, Client client) {
+
+    }
+
+    public void removeClientFromMentor(Long mentorId, Long clientId) {
+
     }
 }

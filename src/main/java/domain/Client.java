@@ -2,11 +2,10 @@ package domain;
 
 import authentication.Account;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "UserId")
@@ -14,6 +13,9 @@ import java.util.Date;
 public class Client extends User {
     @Column(name = "CarePlan")
     private String carePlan;
+
+    @ManyToMany(mappedBy = "clients")
+    private List<Mentor> mentors = new ArrayList<>();
 
     public Client() {
         super();                // TODO: Is this necessary?
