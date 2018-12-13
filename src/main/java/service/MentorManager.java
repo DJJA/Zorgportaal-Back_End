@@ -35,7 +35,7 @@ public class MentorManager {
 
         mentorDAO.update(mentor);
 
-        em.getTransaction().commit();
+        em.getTransaction().commit();   // TODO: Error handling
         em.close();
     }
 
@@ -47,11 +47,27 @@ public class MentorManager {
         return DAOFactory.getMentorDAO().getAll();
     }
 
-    public void addClientToMentor(Long mentorId, Client client) {
+    public void addClientToMentor(Long mentorId, Long clientId) {
+        MentorDAO mentorDAO = DAOFactory.getMentorDAO();
+        EntityManager em = mentorDAO.getEntityMangaer();
 
+        em.getTransaction().begin();
+
+        mentorDAO.addClientToMentor(mentorId, clientId);
+
+        em.getTransaction().commit();
+        em.close();
     }
 
     public void removeClientFromMentor(Long mentorId, Long clientId) {
+        MentorDAO mentorDAO = DAOFactory.getMentorDAO();
+        EntityManager em = mentorDAO.getEntityMangaer();
 
+        em.getTransaction().begin();
+
+        mentorDAO.removeClientFromMentor(mentorId, clientId);
+
+        em.getTransaction().commit();
+        em.close();
     }
 }

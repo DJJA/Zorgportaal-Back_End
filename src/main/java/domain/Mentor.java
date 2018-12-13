@@ -1,11 +1,10 @@
 package domain;
 
 import authentication.Account;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "UserId")
@@ -14,12 +13,13 @@ public class Mentor extends User {
     @Column(name = "Education")
     private String education;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "Mentor_Client",
         joinColumns = @JoinColumn(name = "MentorId"),
         inverseJoinColumns = @JoinColumn(name = "ClientId")
     )
-    private List<Client> clients = new ArrayList<>();
+//    @JsonBackReference
+    private Set<Client> clients = new HashSet<>();
 
     public Mentor() {
         super();

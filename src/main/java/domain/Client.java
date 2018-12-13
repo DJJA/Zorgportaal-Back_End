@@ -1,11 +1,12 @@
 package domain;
 
 import authentication.Account;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "UserId")
@@ -14,8 +15,10 @@ public class Client extends User {
     @Column(name = "CarePlan")
     private String carePlan;
 
-    @ManyToMany(mappedBy = "clients")
-    private List<Mentor> mentors = new ArrayList<>();
+    @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
+//    @JsonManagedReference
+//    @JsonIgnoreProperties("mentors")
+    private Set<Mentor> mentors = new HashSet<>();
 
     public Client() {
         super();                // TODO: Is this necessary?
@@ -41,6 +44,8 @@ public class Client extends User {
         if (!this.carePlan.equals(client.carePlan)) return false;
 
         if (!super.equals(obj)) return false;
+
+        // TODO: Check for clients, depending on fetchType
 
 //        return super.equals((User) obj);
         return true;

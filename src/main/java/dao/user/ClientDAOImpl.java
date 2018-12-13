@@ -52,10 +52,11 @@ public class ClientDAOImpl extends GenericDAO implements ClientDAO {
     }
 
     @Override
-    public Iterable<Client> getByMentorId(Long mentorId) {
+    public Iterable<Client> getClientsByMentorId(Long mentorId) {
         Iterable<Client> clients = null;
 
-        Query q = em.createQuery("select c from Client as c");  // TODO: implement where clause
+        Query q = em.createQuery("select c from Client as c inner join c.mentors as m where m.id = :mentorId");
+        q.setParameter("mentorId", mentorId);
         try {
             clients = q.getResultList();
         } catch (Exception ex) {

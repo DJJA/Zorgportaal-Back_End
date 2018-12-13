@@ -77,6 +77,6 @@ public class ClientManager {
     }
 
     public Iterable<Client> getClientsByMentorId(Long mentorId) {
-
+        return DAOFactory.getClientDAO().getClientsByMentorId(mentorId);
     }
 }
