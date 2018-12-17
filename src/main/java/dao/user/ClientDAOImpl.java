@@ -56,6 +56,7 @@ public class ClientDAOImpl extends GenericDAO implements ClientDAO {
         Iterable<Client> clients = null;
 
         Query q = em.createQuery("select c from Client as c inner join c.mentors as m where m.id = :mentorId");
+//        Query q = em.createNativeQuery("select u.Id, u.Birthday from Client as c inner join Mentor_Client as mc on c.UserId = mc.ClientId inner join User as u on c.UserId = u.Id where mc.MentorId = :mentorId");
         q.setParameter("mentorId", mentorId);
         try {
             clients = q.getResultList();

@@ -1,6 +1,7 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import domain.Client;
+import factory.ManagerFactory;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -30,5 +31,12 @@ public class RTest {
         String json = "{\"year\":2018,\"month\":11,\"day\":8}";
         Timestamp date = new Gson().fromJson(json, Timestamp.class);
 
+    }
+
+//    @Test
+    public void getshit() {
+        Iterable<Client> clients = ManagerFactory.getClientManager().getAllClients();
+        Iterable<Client> clientsByMentorId = ManagerFactory.getClientManager().getClientsByMentorId(3L);
+        System.out.println(clients);
     }
 }

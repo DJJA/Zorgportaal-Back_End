@@ -2,6 +2,7 @@ package domain;
 
 import authentication.Account;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.*;
@@ -13,13 +14,14 @@ public class Mentor extends User {
     @Column(name = "Education")
     private String education;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "Mentor_Client",
-        joinColumns = @JoinColumn(name = "MentorId"),
-        inverseJoinColumns = @JoinColumn(name = "ClientId")
-    )
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinTable(name = "Mentor_Client",
+//        joinColumns = @JoinColumn(name = "MentorId"),
+//        inverseJoinColumns = @JoinColumn(name = "ClientId")
+//    )
 //    @JsonBackReference
-    private Set<Client> clients = new HashSet<>();
+//    @JsonIgnore
+//    private Set<Client> clients = new HashSet<>();
 
     public Mentor() {
         super();

@@ -15,9 +15,15 @@ public class Client extends User {
     @Column(name = "CarePlan")
     private String carePlan;
 
-    @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
+//    @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
 //    @JsonManagedReference
 //    @JsonIgnoreProperties("mentors")
+//    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "Mentor_Client",
+            joinColumns = @JoinColumn(name = "ClientId"),
+            inverseJoinColumns = @JoinColumn(name = "MentorId")
+    )
     private Set<Mentor> mentors = new HashSet<>();
 
     public Client() {
