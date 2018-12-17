@@ -1,6 +1,7 @@
 package service;
 
 import domain.HealthRating;
+import factory.DatabaseType;
 import factory.HibernateFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +20,7 @@ public class HealthRatingManagerTest {
 
     @Test
     public void addHealthRating() {
+        HibernateFactory.setDatabaseType(DatabaseType.TEST);
         HealthRatingManager mgr = new HealthRatingManager();
 
         HealthRating hr = new HealthRating();

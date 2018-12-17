@@ -33,7 +33,11 @@ public class DatabaseCleaner {
         em.getTransaction().begin();
 
         for (Class<?> entityType : ENTITY_TYPES) {
-            deleteEntities(entityType);
+            try {
+                deleteEntities(entityType);
+            } catch (Exception ex) {
+
+            }
         }
         em.getTransaction().commit();
         em.close();
